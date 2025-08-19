@@ -1,0 +1,9 @@
+# Node
+node_modules
+
+# Env-fil med API-nycklar
+.env
+
+# OS-cachefiler
+.DS_Store
+Thumbs.db
