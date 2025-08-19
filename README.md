@@ -27,9 +27,10 @@ Projektet är en del av min AI-kurs och fungerar i terminalen som en chatbot.
    ```bash
    npm start
 
-Exempel på chat:<br>
-   Du: Hej!<br>
-   Bot: Hej! Hur kan jag hjälpa dig idag?
+Exempel:<br> Du: Hej!<br>Bot: Hej! Hur kan jag hjälpa dig idag?
+
+         
+
 
 2. Avsluta:
    ```bash
