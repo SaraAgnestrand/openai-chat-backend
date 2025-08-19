@@ -1,7 +1,6 @@
 # OpenAI Chat Backend
 
 En enkel backend-chatbot byggd med **Node.js** och **OpenAI API**.  
-Projektet är en del av min AI-kurs och fungerar i terminalen som en chatbot.
 
 ---
 
