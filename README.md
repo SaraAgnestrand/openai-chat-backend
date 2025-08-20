@@ -38,3 +38,6 @@ Exempel:<br> Du: Hej!<br>Bot: Hej! Hur kan jag hjälpa dig idag?
 | `/system ...` | Sätter en ny systemprompt (t.ex. `/system Du är en rolig komiker.`)  |
 | `/temp x`     | Ändrar temperatur (0.0–1.0). Lägre = striktare, högre = mer kreativt |
 | `/help`       | Visar denna lista med alla kommandon och aktuell temperatur          |
+
+
+
