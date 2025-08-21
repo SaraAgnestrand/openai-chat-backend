@@ -7,3 +7,6 @@ node_modules
 # OS-cachefiler
 .DS_Store
 Thumbs.db
+
+
+conversation.json
