@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const path = require("node:path");
-const { indexPath } = require("./indexer");
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
+const { indexFiles } = require("./indexer");
 const { semanticSearch } = require("./query");
 
-router.post("/api/rag/index", async (req, res) => {
+router.post("/api/rag/index", upload.array("files"), async (req, res) => {
   try {
-    const { inputPath = "./data/docs" } = req.body || {};
-    const abs = path.isAbsolute(inputPath)
-      ? inputPath
-      : path.join(process.cwd(), inputPath);
-    await indexPath(abs);
-    res.json({ ok: true });
+    const files = (req.files || []).map((f) => ({
+      filename: f.originalname,
+      buffer: f.buffer,
+      mimetype: f.mimetype,
+    }));
+    const result = await indexFiles(files);
+    res.json({ ok: true, ...result });
   } catch (e) {
     console.error(e);
     res.status(500).json({ ok: false, error: String(e) });
@@ -28,6 +30,14 @@ router.post("/api/rag/query", async (req, res) => {
   } catch (e) {
     console.error(e);
     res.status(500).json({ ok: false, error: String(e) });
+  }
+});
+
+router.get("/api/rag/health", async (req, res) => {
+  try {
+    return res.json({ ok: true, backend: "chroma", indexCount: null });
+  } catch {
+    return res.status(500).json({ ok: false });
   }
 });
 
